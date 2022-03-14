@@ -1,0 +1,12 @@
+Untersuchen was besser sein könnte:
+	schnellere Trainingtimes (mehr Bilder pro Sekunde)  	
+	schnellere Konvergenz	(schneller gutes Resultat)
+	kleineres Model 	(weniger Speicher & schnellere Ausführungszeit)
+	bessere Schlussergebnisse nach langem Training
+
+Wie könnte man dies Messen:
+	1., 2. 10 verschiedene Trainingsruns bis Loss = 0 (equal wins and fails)
+	3. latent space untersuchen, model wheight messen
+	4. 5 Trainingsruns für X Stunden (bsp 10 h ~2 Tage)
+
+	

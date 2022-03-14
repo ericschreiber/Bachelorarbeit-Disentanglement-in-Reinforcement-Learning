@@ -3,6 +3,7 @@ Cart-Pole project is done with '100%' accuracy (200/200 points every time)
 But I could not find a source for training with ale environment.
 I finally got it to work. Since it is late in the evening i will postpone doing the rest. I have to set it up in a new file.*/
 Pong is working. But training takes a long time. I am not surprised, that model still looses. But it should be somewhat better.
+Das zweite DQN file versucht das preprocessing schneller zu machen und alles in batches auf der GPU auszuführen.
 
 Quellen: 
 
@@ -22,6 +23,24 @@ Autoencoder:
 Tutorial (old): 					https://github.com/bnsreenu/python_for_microscopists/blob/master/178_179_variational_autoencoders_mnist.py
 Vlt sehr gut: 						https://github.com/alexbooth/Beta-VAE-Tensorflow-2.0/blob/master/model.py
 code based on: 						https://debuggercafe.com/getting-started-with-variational-autoencoder-using-pytorch/
+Beta VAE Paper						https://openreview.net/pdf?id=Sy2fzU9gl
+ConvVAE debuggercoffe:					https://debuggercafe.com/convolutional-variational-autoencoder-in-pytorch-on-mnist-dataset/
+ConvVAE DS:						https://towardsdatascience.com/building-a-convolutional-vae-in-pytorch-a0f54c947f71
+possible Improvement of VAE:				https://openreview.net/pdf?id=ryxOvH86SH
+
+Other Approaches:		
+ATC Learning: 						http://proceedings.mlr.press/v139/stooke21a/stooke21a.pdf
+"Almost perfect dis-
+entanglement has been shown to be helpful for down-
+stream performance and OOD1 generalization even with
+MLP downstream task"					https://openreview.net/pdf?id=I8rHTlfITWC (linked to this paper https://arxiv.org/abs/2010.14407v2)
+
+Log Traininginformation & Speed-up:
+Pytorch Profiler 					https://opendatascience.com/optimizing-pytorch-performance-batch-size-with-pytorch-profiler/
+tensorboard --logdir=C:\Users\erics\Documents\Programme\Bachelorarbeit\Profiler\BVAE
+
+Auflistung zum noch durchlesen:				https://neptune.ai/blog/best-tools-to-log-and-manage-ml-model-building-metadata
+
 
 
 Maybe RL with autoencoder: https://github.com/navneet-nmk/pytorch-rl
@@ -36,13 +55,49 @@ Conda gym:  conda install -c conda-forge gym-atari
 
 Fragen:
 	Ich verliere Präzision im mean_loss & epsilon Why?? (DRL_TowardsDataScience_Pong.ipynb)
-	Dimensionen bei VAE stimmen nicht überein
-	Gewicht whights aufsummiert gleich 1 (also auch BCE gewichten)
+	Setze kleine Gewichte = 0 Wie kann man das machen?mit copying
+	Conv 2.5x langsamer extrem aufwändig 
+	mean and Log Variance in autoencoders (ist dies eine schätzung und wie lernt man dies)
+	Benjamin Code:
+	    Train Gan:	disc.train()		Was macht das discriminator network?
+            		enc.train()
+            		dec.train()
+				Müssen die nicht miteinander trainiert werden? (Nein da gegeneinander arbeiten)
+
+
+Ideen:
+	Gewicht wheights aufsummiert gleich 1 (also auch BCE gewichten)
 	Verschiedene Betas versuchen
 	
 	R^2 wert nutzen um correlation zu finden -> minimale anzahl features (Beta reduzieren bis schwellenwert von r^2 erreicht. R^2 gibt prozent der eingefangenen varianz der Trainingsdaten durch das model an.)
-	PCA statt Beta VAE nutzen mit R^2
+	PCA statt Beta VAE nutzen mit R^2 -> ****Arbeit vergleiche disentanglement mit PCA.****
 
+	Ein Layer weniger in VAE für speed up
+	Versuche Conv BVAE for speed up
 	Lerne BVAE mit buffered input data weil sonst preprocessing viel zu lange dauert
 
 	
+
+Notizen Besprechung: Stand 2.3. BVAE auf GPU 14 Games in 6 min 20 sec
+		    ursprüngliches Netz: 2 min
+
+	(X) Latent space finden: decoder mit unterschiedlichen inputs füttern
+	(X) class definieren für layers
+	Layer freezen(.requires_gradfield = false oder  & gewichte reinladen)
+	aufschreiben, was ich analysieren möchte.
+	anfangsgewichte aufschreiben (set random seeds)
+Notizen Besprechung: 10.3.
+	(X) Conv mit BCE machen 
+	(X) klwheight als fixer Hyperparameter ~1-16
+	Cluster testen conv
+	latent spaces: dimensionwise kl divergence anschauen 0 space kl < 0.01
+	letzter kernel nicht 4 sondern kleiner dafür mehr lin layer oder 1. kernel grösser und 1. grösserer stride.
+	1. Mal trainieren ohne kl divergence. Danach erst beta einführen. Ohne Kl muss gut lernen aber halt alles entglet
+
+Notizen: 10.3. - 17.3.
+	Im Moment loss function berechnet in vae class. könnte es besser sein criterion zu benutzen? Vlt weniger kopieren?
+
+
+	
+	
+MAR 8: aten::item & aten::_local_scalar_dense brauchen sehr viel mehr Zeit bei conv als bei linear. Beide sind (bei lin & conv) cpu operations WIE KÖNNTE MAN DIESE KÜRZEN?
