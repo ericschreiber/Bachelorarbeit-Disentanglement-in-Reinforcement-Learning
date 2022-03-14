@@ -94,8 +94,9 @@ Notizen Besprechung: 10.3.
 	letzter kernel nicht 4 sondern kleiner dafür mehr lin layer oder 1. kernel grösser und 1. grösserer stride.
 	1. Mal trainieren ohne kl divergence. Danach erst beta einführen. Ohne Kl muss gut lernen aber halt alles entglet
 
-Notizen: 10.3. - 17.3.
+Notizen & Fragen: 10.3. - 17.3.
 	Im Moment loss function berechnet in vae class. könnte es besser sein criterion zu benutzen? Vlt weniger kopieren?
+	Möchtest du Zugrif auf mein Github?
 
 
 	
