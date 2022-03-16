@@ -89,15 +89,20 @@ Notizen Besprechung: Stand 2.3. BVAE auf GPU 14 Games in 6 min 20 sec
 Notizen Besprechung: 10.3.
 	(X) Conv mit BCE machen 
 	(X) klwheight als fixer Hyperparameter ~1-16
-	Cluster testen conv
+	(X) Cluster testen conv
 	latent spaces: dimensionwise kl divergence anschauen 0 space kl < 0.01
 	letzter kernel nicht 4 sondern kleiner dafür mehr lin layer oder 1. kernel grösser und 1. grösserer stride.
 	1. Mal trainieren ohne kl divergence. Danach erst beta einführen. Ohne Kl muss gut lernen aber halt alles entglet
 
 Notizen & Fragen: 10.3. - 17.3.
 	Im Moment loss function berechnet in vae class. könnte es besser sein criterion zu benutzen? Vlt weniger kopieren?
-	Möchtest du Zugrif auf mein Github?
+	Möchtest du Zugrif auf mein Github? Soll ich auf Gitlab hochladen?
+	Pfad bei Job funktioniert nicht. Kein Zugriff??
+	Brauche unterschiedliche gute Agents um Daten zu sammeln -> Muss noch neue Daten sammeln
 
+	
+LOGIN SSH:  cd /itet-stor/ericschr/net_scratch/BA/
+	    jupyter notebook --no-browser --port 1234
 
 	
 	
