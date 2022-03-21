@@ -1,0 +1,12 @@
+LOGIN SSH:  	cd /itet-stor/ericschr/net_scratch/BA/
+	    	jupyter notebook --no-browser --port 1234
+	
+Port forwarding: 
+
+PSCP:		pscp C:\Users\erics\Documents\Programme\Bachelorarbeit\PongNoFrameskip-v4-best-Kopie-11-300.dat ericschr@tik42x.ethz.ch:/itet-stor/ericschr/net_scratch/BA
+
+SLURM:		squeue
+		sbatch [temporary_options] job_script [job_script arguments]
+		scancel <JOBID>
+		srun --time 10 --gres=gpu:1 --pty bash -i
+		srun --time 10 --jobid=<JOBID> --pty bash -i

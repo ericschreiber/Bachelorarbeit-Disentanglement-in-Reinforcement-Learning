@@ -90,20 +90,39 @@ Notizen Besprechung: 10.3.
 	(X) Conv mit BCE machen 
 	(X) klwheight als fixer Hyperparameter ~1-16
 	(X) Cluster testen conv
-	latent spaces: dimensionwise kl divergence anschauen 0 space kl < 0.01
-	letzter kernel nicht 4 sondern kleiner dafür mehr lin layer oder 1. kernel grösser und 1. grösserer stride.
-	1. Mal trainieren ohne kl divergence. Danach erst beta einführen. Ohne Kl muss gut lernen aber halt alles entglet
+	(X) latent spaces: dimensionwise kl divergence anschauen 0 space kl < 0.01
+	(X) letzter kernel nicht 4 sondern kleiner dafür mehr lin layer oder 1. kernel grösser und 1. grösserer stride.
+	(X) 1. Mal trainieren ohne kl divergence. Danach erst beta einführen. Ohne Kl muss gut lernen aber halt alles entglet
 
 Notizen & Fragen: 10.3. - 17.3.
-	Im Moment loss function berechnet in vae class. könnte es besser sein criterion zu benutzen? Vlt weniger kopieren?
-	Möchtest du Zugrif auf mein Github? Soll ich auf Gitlab hochladen?
-	Pfad bei Job funktioniert nicht. Kein Zugriff??
+	(X) Im Moment loss function berechnet in vae class. könnte es besser sein criterion zu benutzen? Vlt weniger kopieren?
+	Möchtest du Zugrif auf mein Github? Soll ich auf Gitlab hochladen? -> Gitlab
+	(X) Pfad bei Job funktioniert nicht. Kein Zugriff?? -> Files executable machen!!
 	Brauche unterschiedliche gute Agents um Daten zu sammeln -> Muss noch neue Daten sammeln
+	Wie loggt man? Wie loggt man print ausgaben? Gestern 7h laufen lassen aber entweder nicht gelernt oder nicht gespeichert.
+	Multiple GPUs 
+	Wieviel soll ich nachfragen? Deutlich schneller oder selbständiger?
+	Wie spiechert man Anfangs random seeds?
+	TODO Vorschläge: Daten sammeln
+			Conv trainieren
+			
+
+Notizen Besprechung: 17.3.
+	(X) Logging mit Tensorboard
+	conv nochmals auf cluster
+	Beta-TCVAE (anderer loss) wheights ~1-20 = beta
+	Gitlab hochladen
+	Rsync anstatt scp 
+	Funktion schreiben um Daten zu generireen dann random sampeln f(p1, p2, xBall ,yBall) damit kann man dann auch untersuchungen machen
+	Wie spiechert man Anfangs random seeds?  aaae/aaae/train_dislibvae.py Zeile 2355
+	Überlege setup vergleich 
+
+Notizen & Fragen: 17.3. - 24.3.
+	Output relativ spät ins File geschrieben. Gibt es einen Force Command sodass alles zeitnah geschrieben wird?
+
+
 
 	
-LOGIN SSH:  cd /itet-stor/ericschr/net_scratch/BA/
-	    jupyter notebook --no-browser --port 1234
 
 	
 	
-MAR 8: aten::item & aten::_local_scalar_dense brauchen sehr viel mehr Zeit bei conv als bei linear. Beide sind (bei lin & conv) cpu operations WIE KÖNNTE MAN DIESE KÜRZEN?
