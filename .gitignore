@@ -8,6 +8,8 @@ runs/
 PongNoFrameskip-v4-best.dat
 PyTorch Layer Dimensions The Complete Cheat Sheet Towards Data Science.pdf
 train_data100kFEB23.npy
+train_data100kMAR22.npy
 train_dataFEB22.npy
 val_data20kFEB23.npy
+val_data20kMAR22.npy
 val_dataFEB22.npy

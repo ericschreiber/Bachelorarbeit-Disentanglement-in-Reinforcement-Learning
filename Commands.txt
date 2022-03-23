@@ -1,7 +1,9 @@
 LOGIN SSH:  	cd /itet-stor/ericschr/net_scratch/BA/
 	    	jupyter notebook --no-browser --port 1234
 	
-Port forwarding: 
+Port forwarding: forward port 1234 for jupyter & x11 activate
+
+chmod:		chmod +x Beta_TC_VAE_bestermann.py
 
 PSCP:		pscp C:\Users\erics\Documents\Programme\Bachelorarbeit\PongNoFrameskip-v4-best-Kopie-11-300.dat ericschr@tik42x.ethz.ch:/itet-stor/ericschr/net_scratch/BA
 
@@ -10,3 +12,8 @@ SLURM:		squeue
 		scancel <JOBID>
 		srun --time 10 --gres=gpu:1 --pty bash -i
 		srun --time 10 --jobid=<JOBID> --pty bash -i
+
+git: 		git push gitlab main:dev	#push to gitlab dev branch
+		git push origin main 		#push to github
+
+tensorboard:	runterladen auf pc dann 

@@ -109,16 +109,22 @@ Notizen & Fragen: 10.3. - 17.3.
 
 Notizen Besprechung: 17.3.
 	(X) Logging mit Tensorboard
-	conv nochmals auf cluster
-	Beta-TCVAE (anderer loss) wheights ~1-20 = beta
-	Gitlab hochladen
+	(X) conv nochmals auf cluster
+	(X) Beta-TCVAE (anderer loss) wheights ~1-20 = beta
+	(X) Gitlab hochladen
 	Rsync anstatt scp 
-	Funktion schreiben um Daten zu generireen dann random sampeln f(p1, p2, xBall ,yBall) damit kann man dann auch untersuchungen machen
-	Wie spiechert man Anfangs random seeds?  aaae/aaae/train_dislibvae.py Zeile 2355
+	(X) Funktion schreiben um Daten zu generireen dann random sampeln f(p1, p2, xBall ,yBall) damit kann man dann auch untersuchungen machen
+	(X) Wie spiechert man Anfangs random seeds?  aaae/aaae/train_dislibvae.py Zeile 2355
 	Überlege setup vergleich 
 
 Notizen & Fragen: 17.3. - 24.3.
 	Output relativ spät ins File geschrieben. Gibt es einen Force Command sodass alles zeitnah geschrieben wird?
+	gitlab main branch protected ich pushe zu dev
+	Fragen ob random_seed korrekt gespeichert und was man damit machen soll?
+	2x2 Ball zu klein für linear netzwerk (beta = tc = 0) auch 3x3 -> mit kleinem Beta geht es 
+	TC oder nur bce lässt Werte NaN werden mit beta = 10 stable
+	Soll TC negativ sein? Ich nehme absolutwert korrekt?
+	Wie soll ich angehen um gute Vergleiche zu machen? Statistisch signifikant schon angesprochen was muss ich dafür machen?
 
 
 
