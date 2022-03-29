@@ -17,3 +17,6 @@ git: 		git push gitlab main:dev	#push to gitlab dev branch
 		git push origin main 		#push to github
 
 tensorboard:	runterladen auf pc dann 
+		tensorboard --logdir=VAE
+
+jupyter: 	jupyter nbconvert --to script

@@ -118,17 +118,29 @@ Notizen Besprechung: 17.3.
 	Überlege setup vergleich 
 
 Notizen & Fragen: 17.3. - 24.3.
-	Output relativ spät ins File geschrieben. Gibt es einen Force Command sodass alles zeitnah geschrieben wird?
-	gitlab main branch protected ich pushe zu dev
-	Fragen ob random_seed korrekt gespeichert und was man damit machen soll?
-	2x2 Ball zu klein für linear netzwerk (beta = tc = 0) auch 3x3 -> mit kleinem Beta geht es 
-	TC oder nur bce lässt Werte NaN werden mit beta = 10 stable
-	Soll TC negativ sein? Ich nehme absolutwert korrekt?
-	Wie soll ich angehen um gute Vergleiche zu machen? Statistisch signifikant schon angesprochen was muss ich dafür machen?
+	(X) Output relativ spät ins File geschrieben. Gibt es einen Force Command sodass alles zeitnah geschrieben wird?
+	(X) gitlab main branch protected ich pushe zu dev
+	(X) Fragen ob random_seed korrekt gespeichert und was man damit machen soll?
+	(X) 2x2 Ball zu klein für linear netzwerk (beta = tc = 0) auch 3x3 -> mit kleinem Beta geht es 
+	(X) TC oder nur bce lässt Werte NaN werden mit beta = 10 stable
+	(X) Soll TC negativ sein? Ich nehme absolutwert korrekt?
+	(X) Wie soll ich angehen um gute Vergleiche zu machen? Statistisch signifikant schon angesprochen was muss ich dafür machen?
+		(5 oder mehr verschiedene random seeds, verschiedene models, )
 
 
+Notizen Besprechung: 24.03.
+	(X) gradient clipping gegen NaN (bei loss backward) Hat ohne funktioniert weiss aber nicht warum :/ 
+	(X) Tc = beta -1
+	TC untersuchen
+	(X) TC negativ lassen (je negativ desto besser)
+	(X) 0&1 werte in game
+	Wie generalisiert model auf nicht 0&1 werte? -> analyse
+	lineares model Grösse 2
+	(X) DQN mit pretrained (gleichen conv layers)
+	falls Zeit: loss aus Paper L1
+	genau spezifizieren wie der vergleich ist. (Trainingszeit (performance per step) , random seeds, etc)
+	Paper lesen zu Metrics 3 metrics
+	falls Zeit mal anschauen Disentaglement metrics (disentanglement lib auf tensorflow)
 
-	
-
-	
+Notizen & Fragen: 24.3. - 31.3.
 	
