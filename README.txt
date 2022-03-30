@@ -27,6 +27,7 @@ Beta VAE Paper						https://openreview.net/pdf?id=Sy2fzU9gl
 ConvVAE debuggercoffe:					https://debuggercafe.com/convolutional-variational-autoencoder-in-pytorch-on-mnist-dataset/
 ConvVAE DS:						https://towardsdatascience.com/building-a-convolutional-vae-in-pytorch-a0f54c947f71
 possible Improvement of VAE:				https://openreview.net/pdf?id=ryxOvH86SH
+BCE Loss & KL divergence erklärt			https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a			
 
 Other Approaches:		
 ATC Learning: 						http://proceedings.mlr.press/v139/stooke21a/stooke21a.pdf
@@ -134,13 +135,28 @@ Notizen Besprechung: 24.03.
 	TC untersuchen
 	(X) TC negativ lassen (je negativ desto besser)
 	(X) 0&1 werte in game
-	Wie generalisiert model auf nicht 0&1 werte? -> analyse
-	lineares model Grösse 2
+	(X) Wie generalisiert model auf nicht 0&1 werte? -> analyse (gar nicht)
+	(X) lineares model Grösse 2
 	(X) DQN mit pretrained (gleichen conv layers)
 	falls Zeit: loss aus Paper L1
-	genau spezifizieren wie der vergleich ist. (Trainingszeit (performance per step) , random seeds, etc)
-	Paper lesen zu Metrics 3 metrics
+	(X) genau spezifizieren wie der vergleich ist. (Trainingszeit (performance per step) , random seeds, etc)
+	(X) Paper lesen zu Metrics 3 metrics
 	falls Zeit mal anschauen Disentaglement metrics (disentanglement lib auf tensorflow)
-
-Notizen & Fragen: 24.3. - 31.3.
 	
+	Neues Dataset mit Buffer von 4 Bilder
+	Conv trainieren auf 4 Bilder
+	
+Notizen & Fragen: 24.3. - 31.3.
+	TC Training nochmals anschauen
+	Wie soll ich mit Buffer lernen? Original macht 4 input chanels im Bild. Dies ist schwierig zum lernen, da meine Bilder nicht nacheinander 		sind. -> neuen Datensatz mit 4 Bilder als chanel inputs
+	Wie lernt RL -> siehe Tensorboard DQN
+	Disentanglement metrics lernen die nochmals ein Model?
+	NaN Problem: 	The issue is that Sigmoid (in particular, the so-call logistic function)
+			uses exponential to map (-inf, inf) to (0.0, 1.0). But then BCELoss
+			turns around and uses log() to map (0.0, 1.0) back to (-inf, inf).
+			Mathematically, this is fine, but numerically, using floating-point
+			arithmetic, the exponentials can start to saturate, leading to loss
+			of precision, and can underflow to 0.0 and overflow to inf, leading
+			to infs and nans in your loss function and backpropagation. [https://discuss.pytorch.org/t/bce-loss-vs-cross-entropy/97437/3]
+
+	NaN Problem unterschen aber files gelöscht
