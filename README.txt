@@ -130,7 +130,8 @@ Notizen & Fragen: 17.3. - 24.3.
 
 
 Notizen Besprechung: 24.03.
-	(X) gradient clipping gegen NaN (bei loss backward) Hat ohne funktioniert weiss aber nicht warum :/ 
+	(X) gradient clipping gegen NaN (bei loss backward) Hat ohne funktioniert weiss aber nicht warum :/
+		exploding gradient, step auslassen anstatt auf 0 setzen 
 	(X) Tc = beta -1
 	TC untersuchen
 	(X) TC negativ lassen (je negativ desto besser)
@@ -141,10 +142,9 @@ Notizen Besprechung: 24.03.
 	falls Zeit: loss aus Paper L1
 	(X) genau spezifizieren wie der vergleich ist. (Trainingszeit (performance per step) , random seeds, etc)
 	(X) Paper lesen zu Metrics 3 metrics
-	falls Zeit mal anschauen Disentaglement metrics (disentanglement lib auf tensorflow)
+	(X) falls Zeit mal anschauen Disentaglement metrics (disentanglement lib auf tensorflow)
 	
-	Neues Dataset mit Buffer von 4 Bilder
-	Conv trainieren auf 4 Bilder
+
 	
 Notizen & Fragen: 24.3. - 31.3.
 	TC Training nochmals anschauen
@@ -159,4 +159,21 @@ Notizen & Fragen: 24.3. - 31.3.
 			of precision, and can underflow to 0.0 and overflow to inf, leading
 			to infs and nans in your loss function and backpropagation. [https://discuss.pytorch.org/t/bce-loss-vs-cross-entropy/97437/3]
 
-	NaN Problem unterschen aber files gelöscht
+	NaN Problem unterschen aber files gelöscht 
+	Github aufgesetzt :/
+	
+	Neues Dataset mit Buffer von 4 Bilder
+	Conv trainieren auf 4 Bilder
+
+
+Notizen Besprechung: 31.03.
+	gradient clipping gegen NaN (bei loss backward) Hat ohne funktioniert weiss aber nicht warum :/
+		exploding gradient, step auslassen anstatt auf 0 setzen 
+	! Gridsearch TC & Beta
+	Längere DQN Trainingruns
+	4 chanel auch laufen lassen. Sollte gleich schnell wie normal sein
+	Prüfen ob alle loss mean oder alle loss sum sind
+	NaN with logistic Log Digits aber unbedingt bei encode() forward wieder sigmoid anwenden!
+	new dataset: npz array machen (mit labels und bilder)
+	Library für metrics installieren & laufen
+	falls Zeit: loss aus Paper L1
