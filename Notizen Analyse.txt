@@ -23,7 +23,7 @@ Verändern:
 	
 
 VAE:
-1. Untersuchen auf 1 Bild reconstruction (all linear & conv & groundtruth factors[mittelpunkt des balls etc])
+1. Untersuchen auf 1 Bild reconstruction (all linear & conv & groundtruth factors[mittelpunkt des balls etc] (netuwerk trainiern auf GT labels))
 2. Trainieren auf besten Hyperparameter für conv mit 4 chanel inputs
 Untersuchen was besser sein könnte:
 	schnellere Trainingtimes (mehr Bilder pro Sekunde)  	

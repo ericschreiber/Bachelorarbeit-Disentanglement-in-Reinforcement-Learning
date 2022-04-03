@@ -169,20 +169,26 @@ Notizen & Fragen: 24.3. - 31.3.
 Notizen Besprechung: 31.03.
 	(X) gradient clipping gegen NaN (bei loss backward) Hat ohne funktioniert weiss aber nicht warum :/
 		exploding gradient, step auslassen anstatt auf 0 setzen 
-	! Gridsearch TC & Beta (5x5 Gridsearch 10 Epochs, log value increase 10, 1, 0.1, 0.01, 0.001)
-	Längere DQN Trainingruns
-	4 chanel auch laufen lassen. Sollte gleich schnell wie normal sein
+	(X) ! Gridsearch TC & Beta (5x5 Gridsearch 10 Epochs, log value increase 10, 1, 0.1, 0.01, 0.001)
+	(X) Längere DQN Trainingruns
+	(X) 4 chanel auch laufen lassen. Sollte gleich schnell wie normal sein [Das war der Grund für die längere Laufzeit]
 	(X) Prüfen ob alle loss mean oder alle loss sum sind [Alles sum]
 	(X) NaN with logistic Log Digits aber unbedingt bei encode() forward wieder sigmoid anwenden! [War nicht besser als mit grad clipping]
-	new dataset: npz array machen (mit labels und bilder)
+	(X) new dataset: npz array machen (mit labels und bilder)
 	Library für metrics installieren & laufen
 	falls Zeit: loss aus Paper L1
 
 Notizen & Fragen: 31.3. - 7.4.
-	Step auslassen funktioniert bei BCE aber nicht bei LogitsLoss. Clipping funktioniert bei beiden. Wobei besser bei Logitsloss als bei BCE
-		Nur Logitsloss wird plötzlich alles 0. Weiss nicht warum aber mit Clipping oder Continue geht es 
+	Step auslassen funktioniert bei BCE aber nicht bei LogitsLoss. nan_to_num funktioniert bei beiden. Wobei besser bei Logitsloss als bei BCE
+		Nur Logitsloss wird plötzlich alles 0. Weiss nicht warum aber mit nan_to_num oder Continue geht es 
 		Training und validation loss werden trotzdem nan ( müssten Loss buffern und nur schreiben falls nichts falsch)
-		-> Decide BCE mit clipping (ohne continue) Haltet 20 Epochs durch
+		-> Decide BCE mit nan_to_num (ohne continue) Haltet 20 Epochs durch
 	Mit beta > 0.001 kommt immer auf gleichen finalen Trainingsloss Grid_train_losses:
 		[-1900.121363046875, -4.094250633544922, -4.094250617980957, -4.09425067565918, -4.0942505978393555, -4.094250721435547]
+	Gridsearch eher ernüchternd, aber verschiedene Lat Dimensions deuten darauf hin, dass 6 Dim möglich sind
+	Empfelungsschreiben Data Science
+	Einstellung, dass log-file während execution gefüllt wird sodass auch gefüllt wenn abgebrochen
+
+	TODO: Check dimesions after BVAE in DQN with pretrained BVAE
+		Letztes DQN run hat nicht gelernt warum??
 	

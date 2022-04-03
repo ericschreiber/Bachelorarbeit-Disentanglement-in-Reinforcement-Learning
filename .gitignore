@@ -15,3 +15,5 @@ val_data20kMAR22.npy
 val_dataFEB22.npy
 train_data100kBufferMAR29.npy
 val_data20kBufferMAR29.npy
+train_data100kBufferWithLabels.npz
+val_data100kBufferWithLabels.npz
