@@ -5,6 +5,7 @@ MNIST Beta VAE/
 models/
 Profiler/
 runs/
+Disentanglement metrics/
 PongNoFrameskip-v4-best.dat
 PyTorch Layer Dimensions The Complete Cheat Sheet Towards Data Science.pdf
 train_data100kFEB23.npy

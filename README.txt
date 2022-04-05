@@ -191,4 +191,5 @@ Notizen & Fragen: 31.3. - 7.4.
 
 	TODO: Check dimesions after BVAE in DQN with pretrained BVAE
 		Letztes DQN run hat nicht gelernt warum??
+		Evaluate.py Zeile 314 witerschreiben
 	
