@@ -28,6 +28,15 @@ ConvVAE debuggercoffe:					https://debuggercafe.com/convolutional-variational-au
 ConvVAE DS:						https://towardsdatascience.com/building-a-convolutional-vae-in-pytorch-a0f54c947f71
 possible Improvement of VAE:				https://openreview.net/pdf?id=ryxOvH86SH
 BCE Loss & KL divergence erklärt			https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a			
+JL1:							https://proceedings.neurips.cc/paper/2021/file/bfd2308e9e75263970f8079115edebbd-Supplemental.pdf
+Github JL1:						https://github.com/travers-rhodes/jlonevae/blob/main/jlonevae_lib/architecture/vae_jacobian.py#L105
+TC VAE (relevance factor):				https://arxiv.org/pdf/1902.01568.pdf
+Cyclical Annealing Schedule for beta:			https://medium.com/mlearning-ai/a-must-have-training-trick-for-vae-variational-autoencoder-d28ff53b0023
+
+RL:
+Decoupling Representation Learning from Reinforcement Learning: http://proceedings.mlr.press/v139/stooke21a/stooke21a.pdf (nicht ganz gelesen)
+Atari with RL DQN					https://arxiv.org/pdf/1312.5602.pdf
+
 
 Other Approaches:		
 ATC Learning: 						http://proceedings.mlr.press/v139/stooke21a/stooke21a.pdf
@@ -43,8 +52,14 @@ tensorboard --logdir=C:\Users\erics\Documents\Programme\Bachelorarbeit\Profiler\
 Auflistung zum noch durchlesen:				https://neptune.ai/blog/best-tools-to-log-and-manage-ml-model-building-metadata
 
 
-
 Maybe RL with autoencoder: https://github.com/navneet-nmk/pytorch-rl
+
+
+Quotes
+"disentangled representation can be defined as one where single
+latent units are sensitive to changes in single generative factors, while being relatively invariant to
+changes in other factors (Bengio et al., 2013)."   	https://openreview.net/pdf?id=Sy2fzU9gl
+
 
 
 Conda gym:  conda install -c conda-forge gym-atari 
@@ -187,9 +202,35 @@ Notizen & Fragen: 31.3. - 7.4.
 		[-1900.121363046875, -4.094250633544922, -4.094250617980957, -4.09425067565918, -4.0942505978393555, -4.094250721435547]
 	Gridsearch eher ernüchternd, aber verschiedene Lat Dimensions deuten darauf hin, dass 6 Dim möglich sind
 	Empfelungsschreiben Data Science
-	Einstellung, dass log-file während execution gefüllt wird sodass auch gefüllt wenn abgebrochen
+	Einstellung, dass log-file während execution gefüllt wird sodass auch gefüllt wenn abgebrochen -> unbuffer
 
 	TODO: Check dimesions after BVAE in DQN with pretrained BVAE
 		Letztes DQN run hat nicht gelernt warum??
-		Evaluate.py Zeile 314 witerschreiben
+
+Notizen Besprechung 7.4.:
+	Darla Paper gleiches Problem mit grossem Beta nichts gelernt [reconstruction und input in pretrainied denoising AE dann erst loss berechnen]
+	(X) Versuche mal 10 latent dimensions mit Beta grid [ähnliche Resultate]
+	(X) Deutlich mehr Epochs ~50-100 [gaussian KL wird nur noch grösser]
+	(X) ! L1 Loss implementieren
+	(X) ! metrics (naming anpassen, dataset (dim bider, dim color, x, y))
+
+Notizen & Fragen: 7.4. - 14.4.:
+	conda install -c eumetsat expect [funktioniert nicht]
+	DCI braucht 30 min. Wird alles aus versehen auf cpu gemacht? [4 cpus geben]
+	L1 langsam. L1 auf Buffer anwenden (lesen wie sie mit time series umgegangen sind)[wirklich als ganzes Bild??] [4 cpus geben]
+	0_1 Lernt viel schneller aber den Ball nicht mit lin Netzwerk
+	Beta im korrekten Bereich mit sum bei allem.
+
+
+Notizen Besprechung 14.4.:
+	Ist BCE Loss eine Matrix?
+	(X) Datenset Benjamin schicken
+	! KL plotten und loss etc. KL muss kleiner werden über zeit nicht grösser! (Besterma code hat noch gaussian plotting im tensorbaord)
+	sanity check 6x6 quadrat auf verschiedene Positionen
+	! Batch normalization zwischen den Layers (könnte auch schlechter werden)
+
+Notizen & Fragen: 14.4. - 21.4.:
+	untersuche disentanglement bei neuem einfachem Datensatz. Ob mein Code irgendwo falsch ist?
+	Idee nächste Woche mal nur schreiben? Dann wieder mehr Lust auf verschieden Dinge zu probieren.
 	
+TODO: Disentanglement metrics machen und unterscuhen für neue BTC & L1. Zudem KL & loss nochmals plotten

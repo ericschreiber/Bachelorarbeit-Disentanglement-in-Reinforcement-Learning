@@ -20,4 +20,4 @@ git: 		git push gitlab main:dev	#push to gitlab dev branch
 tensorboard:	runterladen auf pc dann 
 		tensorboard --logdir=VAE
 
-jupyter: 	jupyter nbconvert --to script
+jupyter: 	jupyter nbconvert --to script Path.ipynb

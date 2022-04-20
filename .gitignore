@@ -18,3 +18,12 @@ train_data100kBufferMAR29.npy
 val_data20kBufferMAR29.npy
 train_data100kBufferWithLabels.npz
 val_data100kBufferWithLabels.npz
+train_data100kWithLabels_benjamin.npz
+val_data20kWithLabels_benjamin.npz
+Sqauretrain_data100kWithLabels.npz
+Sqaureval_data20kWithLabels.npz
+train_data100kWithLabels.npz
+val_data100kBWithLabels.npz
+val_data20kBWithLabels.npz
+L1train_data100kWithLabels.npz
+L1val_data20kBWithLabels.npz
