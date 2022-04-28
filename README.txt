@@ -28,9 +28,9 @@ ConvVAE debuggercoffe:					https://debuggercafe.com/convolutional-variational-au
 ConvVAE DS:						https://towardsdatascience.com/building-a-convolutional-vae-in-pytorch-a0f54c947f71
 possible Improvement of VAE:				https://openreview.net/pdf?id=ryxOvH86SH
 BCE Loss & KL divergence erklärt			https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a			
-JL1:							https://proceedings.neurips.cc/paper/2021/file/bfd2308e9e75263970f8079115edebbd-Supplemental.pdf
+JL1:							https://proceedings.neurips.cc/paper/2021/file/bfd2308e9e75263970f8079115edebbd-Paper.pdf / https://proceedings.neurips.cc/paper/2021/file/bfd2308e9e75263970f8079115edebbd-Supplemental.pdf
 Github JL1:						https://github.com/travers-rhodes/jlonevae/blob/main/jlonevae_lib/architecture/vae_jacobian.py#L105
-TC VAE (relevance factor):				https://arxiv.org/pdf/1902.01568.pdf
+TC VAE (relevance factor):				https://proceedings.neurips.cc/paper/2018/hash/1ee3dfcd8a0645a25a35977997223d22-Abstract.html
 Cyclical Annealing Schedule for beta:			https://medium.com/mlearning-ai/a-must-have-training-trick-for-vae-variational-autoencoder-d28ff53b0023
 
 RL:
@@ -59,6 +59,10 @@ Quotes
 "disentangled representation can be defined as one where single
 latent units are sensitive to changes in single generative factors, while being relatively invariant to
 changes in other factors (Bengio et al., 2013)."   	https://openreview.net/pdf?id=Sy2fzU9gl
+
+We believe that using our approach as an unsupervised pretraining
+stage for supervised or reinforcement learning will produce significant improvements for scenarios
+such as transfer or fast learning.			https://openreview.net/pdf?id=Sy2fzU9gl (original beta VAE)
 
 
 
@@ -223,14 +227,37 @@ Notizen & Fragen: 7.4. - 14.4.:
 
 
 Notizen Besprechung 14.4.:
-	Ist BCE Loss eine Matrix?
+	(X) Ist BCE Loss eine Matrix? [ja innerhalb von BCEloss() torch.Size([64, 1, 84, 84])]
 	(X) Datenset Benjamin schicken
 	! KL plotten und loss etc. KL muss kleiner werden über zeit nicht grösser! (Besterma code hat noch gaussian plotting im tensorbaord)
-	sanity check 6x6 quadrat auf verschiedene Positionen
-	! Batch normalization zwischen den Layers (könnte auch schlechter werden)
+	(X) sanity check 6x6 quadrat auf verschiedene Positionen
+	(X) ! Batch normalization zwischen den Layers (könnte auch schlechter werden) [auch in den convolutions? effektiv schönere ränder]
 
 Notizen & Fragen: 14.4. - 21.4.:
-	untersuche disentanglement bei neuem einfachem Datensatz. Ob mein Code irgendwo falsch ist?
-	Idee nächste Woche mal nur schreiben? Dann wieder mehr Lust auf verschieden Dinge zu probieren.
+	untersuche disentanglement bei neuem einfachem Datensatz. Ob mein Code irgendwo falsch ist? [ich glaube nicht aber weiss nicht wo das Problem 				liegt]
+	(X) Idee nächste Woche mal nur schreiben? Dann wieder mehr Lust auf verschieden Dinge zu probieren.
+		Danke vielmals fürs Durchlesen.
+		War gut um nochmals die Basics zu lesen und zu verstehen. 
+	Code mit Schieber um latent dimensions zu prüfen? [loggen was aus encoder kommt]
+	Steigende KL Divergence why? [zu kleines beta]
+	Wieso gibt es in der KL Divergence einen Spike Bei mean und bei sum
+		Einfach Loss anpassung auslassen geht nicht dann werden alle zukünftigen KL so gross bleiben eg ausgelassen werden
+		Wahrscheinlich okay wenn 75 Epochs log geplotted gibt es immer wieder spikes trotzdem ist der Trend downwards
+	Wieso reduziert sich bei mir entweder BCE oder KL Divergence? Sollte sich nicht beides reduzieren?
+		In welcher Grössenordnung sollten BCE und KL Divergence zu einander sein? 1:1?
+	Scatterplot mit latent dimensions. Mean über latent dimensions sollte nicht auf einem Haufen sein damit es für decoder einfacher wird. ?
+	Muss ich bei Encoder in DQN nach dem Encoder noch aus einer prob distribution samplen oder kann ich einfach mean & log var reingeben? (ich glaub ich 		sollte noch samplen da man aber nur samplet um backpropagatin zu nutzen, was wir hier nicht brauchen glaube ich vlt doch nicht)
+	Empfehlungsschreiben Wattenhofer einfach angeben den Namen?
+	 
+Notizen Besprechung 28.4.:
+	dataset downscalen auf 64x64 und benjamin schicken
+	VAE trainieren und bester nehmen
+	groundtruth aus Bild lernen
+	DQN mit VAE, normal, und groundtruth lernen. 5 verschiedene random seeds
 	
-TODO: Disentanglement metrics machen und unterscuhen für neue BTC & L1. Zudem KL & loss nochmals plotten
+TODO: Fragen überlegen bei den Metrics
+	KL divergence wird nan wenn zu gross wird (glaube ich) daher tritt nur bei sum auf
+	torch.distributions.kl_div läuft gerade
+
+Ideen: Neural net trainieren mit position & richtung dann das nutzen für DQN
+	DQN trainieren mit dem was ich habe

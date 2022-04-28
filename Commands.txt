@@ -21,3 +21,5 @@ tensorboard:	runterladen auf pc dann
 		tensorboard --logdir=VAE
 
 jupyter: 	jupyter nbconvert --to script Path.ipynb
+
+Dismetrics 	python /itet-stor/ericschr/net_scratch/BA/Disentanglement_metrics/disentanglement_lib/compute_disentangle_metrics.py --dataset_path /itet-stor/ericschr/net_scratch/BA/models/TCBVAE/Conv_B1_SUMTC2_Lat10_Epochs70VAE/outputBeta14-4/ConvB1_TC2_Lat10_Epochs70VAE14-4 --mig

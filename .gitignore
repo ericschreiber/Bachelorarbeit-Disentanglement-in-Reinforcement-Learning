@@ -27,3 +27,8 @@ val_data100kBWithLabels.npz
 val_data20kBWithLabels.npz
 L1train_data100kWithLabels.npz
 L1val_data20kBWithLabels.npz
+train_data100kWithLabelsMovingSQ.npz
+val_data20kWithLabelsMovingSQ.npz
+val_data20kWithLabelsMovingSQMetrics.npz
+64x64train_data100kWithLabels_benjamin.npz
+64x64val_data20kWithLabels_benjamin.npz
