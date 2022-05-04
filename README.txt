@@ -250,14 +250,18 @@ Notizen & Fragen: 14.4. - 21.4.:
 	Empfehlungsschreiben Wattenhofer einfach angeben den Namen?
 	 
 Notizen Besprechung 28.4.:
-	dataset downscalen auf 64x64 und benjamin schicken
+	(X) dataset downscalen auf 64x64 und benjamin schicken
 	VAE trainieren und bester nehmen
 	groundtruth aus Bild lernen
 	DQN mit VAE, normal, und groundtruth lernen. 5 verschiedene random seeds
 	
-TODO: Fragen überlegen bei den Metrics
-	KL divergence wird nan wenn zu gross wird (glaube ich) daher tritt nur bei sum auf
-	torch.distributions.kl_div läuft gerade
-
-Ideen: Neural net trainieren mit position & richtung dann das nutzen für DQN
-	DQN trainieren mit dem was ich habe
+Notizen & Fragen: 28.4.- 5.5.:
+	In welcher Grössenordnung sollte random seed sein?
+	GT gemacht
+	DQN normal gemacht
+	Entweder falsche Metrik oder falsche bTC VAE
+	
+TODO: mean testen
+	DQN normal über Nacht laufen lassen
+	DQN mit GT über Nacht laufen lassen
+	DQN mit Buffer GT laufen lassen

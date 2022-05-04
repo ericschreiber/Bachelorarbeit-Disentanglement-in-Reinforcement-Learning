@@ -32,3 +32,13 @@ val_data20kWithLabelsMovingSQ.npz
 val_data20kWithLabelsMovingSQMetrics.npz
 64x64train_data100kWithLabels_benjamin.npz
 64x64val_data20kWithLabels_benjamin.npz
+val_data100kBufferWithLabelsBallbetweenPaddles.npz
+train_data100kBufferWithLabelsBallbetweenPaddles.npz
+val_data100kBufferWithLabelsONLYball.npz
+train_data100kBufferWithLabelsONLYball.npz
+val_data8kBuffer1.npz
+val_data8kBuffer2.npz
+val_data8kBuffer3.npz
+train_data30kBuffer1.npz
+train_data30kBuffer2.npz
+train_data30kBuffer3.npz
