@@ -2,8 +2,9 @@
 Bachelor Thesis of Eric Schreiber FS 2022. 
 
 PDF of the Project Description [Link](https://tik-db.ee.ethz.ch/file/5157fc98c588fe3b8d9e639ea9238f0c/DisentanglementRLBait.pdf) 
+Bachelor Thesis [Link](Bachelor_Thesis.pdf)
 
-Generally I did everything on the cluster expect constructing the datasets and plots. Those are python notebooks which i ran on my laptop. These Python notebooks can be found in the main branch. Everything belonging on the cluster is in the server branch. Everything important is in those two branches. The dev branch contains no ciritical information and is not cleaned up!
+Generally I did everything on the cluster expect constructing the datasets and plots. Those are python notebooks which i ran on my laptop. These Python notebooks can be found in the notebooks folder. 
 
 Please check all location where you import a dataset. I moved all the datasets into one folder. You may have to change those paths.
 ## Installation & Usage
@@ -46,7 +47,7 @@ In general use the scripts of the server branch. These scripts are mostly not on
 *GT_from_image.ipynb*     ->    Traines a NN to predict the location of paddles and the ball. This did not work fine because the form coming from the environment always changes. You have to train it differently.
 
 ## Cluster side
-
+The most important scripts are here up to date. They can be found in the cluster folder.
 ## Installation & Usage
 Install the conda environment on the cluster with
 ```bash
