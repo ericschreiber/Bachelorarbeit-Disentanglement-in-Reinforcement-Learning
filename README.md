@@ -1,8 +1,7 @@
 # Disentanglement for Reinforcement Learning
 Bachelor Thesis of Eric Schreiber FS 2022. 
 
-PDF of the Project Description [Link](https://tik-db.ee.ethz.ch/file/5157fc98c588fe3b8d9e639ea9238f0c/DisentanglementRLBait.pdf) 
-Bachelor Thesis [Link](Bachelor_Thesis.pdf)
+PDF of the [Project Description](https://tik-db.ee.ethz.ch/file/5157fc98c588fe3b8d9e639ea9238f0c/DisentanglementRLBait.pdf) and the [Bachelor Thesis](Bachelor_Thesis.pdf)
 
 Generally I did everything on the cluster expect constructing the datasets and plots. Those are python notebooks which i ran on my laptop. These Python notebooks can be found in the notebooks folder. 
 
